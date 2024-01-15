@@ -18,11 +18,16 @@ public class CarController {
         this.carService = carService;
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/{id:^[0-9]+$}")
     public String getOne(Model model, @PathVariable long id){
         Car car = carService.getOne(id);
         model.addAttribute("car", car);
         return "car/details";
     }
 
+    @GetMapping({"","/all"})
+    public String getAll(Model model){
+        model.addAttribute("cars", carService.getAll());
+        return "car/list";
+    }
 }

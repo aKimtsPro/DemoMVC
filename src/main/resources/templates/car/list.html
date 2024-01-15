@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+  <h1>Lists of all cars:</h1>
+
+  <table>
+    <thead>
+      <td>id</td>
+      <td>brand</td>
+      <td>model</td>
+      <td>link</td>
+    </thead>
+    <tbody>
+      <tr th:each="car : ${cars}" th:object="${car}">
+        <td th:text="*{id}" ></td>
+        <td th:text="*{brand}" ></td>
+        <td th:text="*{model}" ></td>
+        <td><a th:href="@{ /car/{id} (id=*{id}) }">goto</a></td>
+      </tr>
+    </tbody>
+  </table>
+
+</body>
+</html>
